@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+データベース名：cmind_lesson_db
+ユーザID：postgres
+パスワード：postgres0523
+プロジェクト名:cmind_task
+
+ -->
+
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+ <!--  <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" /> -->
+
+<!-- データベース接続設定 -->
+  <context id="PostgreSQLTables" targetRuntime="MyBatis3">
+    <jdbcConnection driverClass="org.postgresql.Driver"
+        connectionURL="jdbc:postgresql://localhost:5432/cmind_lesson_db"
+        userId="postgres"
+        password="postgres0523">
+    </jdbcConnection>
+
+<!--     <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver> -->
+
+	<!-- SELECT 結果等を格納するドメインモデルを生成する設定 -->
+    <javaModelGenerator targetPackage="com.example.demo.model" targetProject="cmind_task/src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <!-- SQL 設定が記述された XML を生成する設定 -->
+    <sqlMapGenerator targetPackage="com.example.demo.mybatis.mapper"  targetProject="cmind_task/src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+ 	<!-- マッパークラスを生成する設定
+        XMLMAPPER：MapperインターフェースクラスとMapperファイルのみ生成
+        MIXEDMAPPER：アノテーションを定義したMapperインターフェースクラスとMapperファイルを生成
+        -->
+    <javaClientGenerator type="MIXEDMAPPER" targetPackage="com.example.demo.mybatis.mapper"  targetProject="cmind_task/src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <table tableName="staff" ></table>
+
+  </context>
+</generatorConfiguration>
