@@ -133,4 +133,9 @@ public interface StaffMapper {
         "where employee_id = #{employeeId,jdbcType=CHAR}"
     })
     int updateByPrimaryKey(Staff row);
+    
+	@Select({
+		"select * from staff where employee_id = #{employeeId} limit 1"
+	})
+	Staff selectByEmployeeId(String employeeId);
 }
