@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-	<meta charset="UTF-8">
-	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-	<link th:href="@{/css/login.css}" rel="stylesheet">
-	<title>ログイン</title>
+<meta charset="UTF-8">
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
+<link th:href="@{/css/login.css}" rel="stylesheet">
+<title>ログイン</title>
 </head>
 <body>
 	<div class="container">
-		<div class="title-group">
-			<div class="logo">
-				<img th:src="@{/images/logo.png}" alt="会社ロゴ" class="img-thumbnail"><!-- ここに画像URLを配置すると、Post送信時にこのURLに遷移してしまう -->
-			</div>
-			<div class="title">
-				<h3>Java教育システム</h3>
-			</div>
+		<div class="logo">
+			<img th:src="@{/images/logo.png}" alt="会社ロゴ" class="img-thumbnail">
 		</div>
-		<div class="login-form">
+		<div class="title d-flex justify-content-center">
+			<h3>Java教育システム</h3>
+		</div>
+		<div class="login-form d-flex justify-content-center">
 			<form th:action="@{/login}" method="post">
-				<table class="table table-bordered">
+				<table class="input-table">
 					<tr class="form-group">
 						<th class="column">社員番号：</th>
 						<td><input class="form-control" type="text" name="username"></td>
 					</tr>
 					<tr class="form-group">
 						<th class="column">パスワード：</th>
-						<td><input class="form-control" type="password" name="password"></td>
+						<td><input class="form-control" type="password"
+							name="password"></td>
 					</tr>
 				</table>
 				<!-- ログインエラーメッセージ -->
