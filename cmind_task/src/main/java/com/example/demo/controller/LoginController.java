@@ -23,6 +23,7 @@ public class LoginController {
 		return "top";
 	}
 	
+	//トップ画面にてログイン情報を取得
 	@GetMapping("/")
 	public String gettop(@AuthenticationPrincipal LoginUserDetails userDetails, Model model) {
 		Staff staff = userDetails.getStaff();
