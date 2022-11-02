@@ -1,0 +1,26 @@
+.login-form{
+	width:  500px;
+	height: 300px;
+	border: 1px solid gray;
+	align-items: center;
+	position: relative;
+	margin:  auto;
+}
+.title{
+	margin:20px;
+}
+.input-table{
+	width: 400px;
+	margin: 0 auto;
+}
+.form-control{
+	margin: 10px 5px;
+}
+.submit-btn{
+	display: flex;
+	justify-content: end;
+}
+.btn{
+	border: 1px solid gray;
+	margin: 5px 0px;
+}
