@@ -20,9 +20,6 @@ public class LoginController {
 	//ログイン成功後top画面の表示
 	@PostMapping("login")
 	public String postLogin() {
-//	public String postlogin(@AuthenticationPrincipal LoginUserDetails userDetails, Model model) {
-//		Staff staff = userDetails.getStaff();
-//		model.addAttribute(staff);
 		return "top";
 	}
 	
@@ -32,7 +29,6 @@ public class LoginController {
 		model.addAttribute(staff);
 		return "top";
 	}
-	
 
 	@PostMapping("/logout")
 	public String logout() {
