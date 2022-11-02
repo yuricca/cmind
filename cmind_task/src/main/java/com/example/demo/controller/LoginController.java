@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -19,13 +21,16 @@ public class LoginController {
 
 	//ログイン成功後top画面の表示
 	@PostMapping("login")
-	public String postLogin() {
+	public String postLogin(@Validated Staff staff, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+            return "login";
+        }
 		return "top";
 	}
 	
 	//トップ画面にてログイン情報を取得
 	@GetMapping("/")
-	public String gettop(@AuthenticationPrincipal LoginUserDetails userDetails, Model model) {
+	public String gettop(@AuthenticationPrincipal LoginUserDetails userDetails, Model model) {		
 		Staff staff = userDetails.getStaff();
 		model.addAttribute(staff);
 		return "top";

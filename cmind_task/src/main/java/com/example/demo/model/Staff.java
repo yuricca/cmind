@@ -4,8 +4,13 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import org.springframework.validation.annotation.Validated;
 
 @Entity
+@Validated
 public class Staff {
     /**
      *
@@ -15,6 +20,8 @@ public class Staff {
      * @mbg.generated Mon Oct 31 23:29:38 JST 2022
      */
 	@Id
+	@NotBlank(message = "社員番号は必ず指定してください")
+    @Size(min = 6, max = 6, message = "社員番号は６桁で指定してください")
     private String employeeId;
 
     /**
@@ -33,6 +40,7 @@ public class Staff {
      *
      * @mbg.generated Mon Oct 31 23:29:38 JST 2022
      */
+    @NotBlank(message = "パスワードは必ず指定してください")
     private String password;
 
     /**

@@ -17,19 +17,20 @@
 			<h3>Java教育システム</h3>
 		</div>
 		<div class="login-form">
-			<form th:action="@{/login}" method="post">
+			<form th:action="@{/login}" method="post" th:object="${staff}">
 				<table class="input-table">
 					<tr class="form-group">
 						<th class="column">社員番号：</th>
-						<td><input class="form-control" type="text" name="username"></td>
+						<td><input class="form-control" type="text" id="username" name="username" th:value="staff.name"></td>
 					</tr>
 					<tr class="form-group">
 						<th class="column">パスワード：</th>
-						<td><input class="form-control" type="password"
-							name="password"></td>
+						<td><input class="form-control" type="password"	id="username" name="password" th:value="staff.password"></td>
 					</tr>
 				</table>
 				<!-- ログインエラーメッセージ -->
+				<div class="alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="${staff.name}"></div>
+				<div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="${staff.password}"></div>
 				<div class="alert alert-danger" th:if="${param.error}">
 					<!-- ${param}でリクエストパラメータを保持 -->
 					ログイン情報に誤りがあります
