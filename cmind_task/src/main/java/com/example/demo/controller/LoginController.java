@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Staff;
@@ -21,7 +22,7 @@ public class LoginController {
 
 	//ログイン成功後top画面の表示
 	@PostMapping("login")
-	public String postLogin(@Validated Staff staff, BindingResult result, Model model) {
+	public String postLogin(@Validated @ModelAttribute Staff staff, BindingResult result,  Model model) {
 		if (result.hasErrors()) {
             return "login";
         }
@@ -30,7 +31,7 @@ public class LoginController {
 	
 	//トップ画面にてログイン情報を取得
 	@GetMapping("/")
-	public String gettop(@AuthenticationPrincipal LoginUserDetails userDetails, Model model) {		
+	public String getTop(@AuthenticationPrincipal LoginUserDetails userDetails, Model model) {		
 		Staff staff = userDetails.getStaff();
 		model.addAttribute(staff);
 		return "top";
