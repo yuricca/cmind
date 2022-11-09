@@ -3,8 +3,7 @@
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
-<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 <link th:href="@{/css/login.css}" rel="stylesheet">
 <title>ログイン</title>
 </head>
@@ -17,20 +16,19 @@
 			<h3>Java教育システム</h3>
 		</div>
 		<div class="login-form">
-			<form th:action="@{/login}" method="post" th:object="${staff}">
+			<form th:action="@{/login}" method="post" th:object="${formValidation}" novalidate>
 				<table class="input-table">
 					<tr class="form-group">
-						<th class="column">社員番号：</th>
-						<td><input class="form-control" type="text" id="username" name="username" th:value="staff.name"></td>
+						<th class="column">社員番号:</th>
+						<td><input class="form-control" type="text" th:field="*{username}"></td>
 					</tr>
 					<tr class="form-group">
 						<th class="column">パスワード：</th>
-						<td><input class="form-control" type="password"	id="username" name="password" th:value="staff.password"></td>
+						<td><input class="form-control" type="password"	th:field="*{password}"></td>
 					</tr>
 				</table>
-				<!-- ログインエラーメッセージ -->
-				<div class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="${name}"></div>
-				<div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="${password}"></div>
+				<!-- エラーメッセージの一覧表示 -->
+        		<div class="alert alert-danger" th:if="${validationError}" th:each="error:${validationError}" th:text="${error}"></div>
 				<div class="alert alert-danger" th:if="${param.error}">
 					<!-- ${param}でリクエストパラメータを保持 -->
 					ログイン情報に誤りがあります
@@ -41,5 +39,7 @@
 			</form>
 		</div>
 	</div>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
