@@ -27,8 +27,9 @@
 						<td><input class="form-control" type="password"	th:field="*{password}"></td>
 					</tr>
 				</table>
-				<!-- エラーメッセージの一覧表示 -->
-        		<div class="alert alert-danger" th:if="${validationError}" th:each="error:${validationError}" th:text="${error}"></div>
+				<!-- エラーメッセージの表示 -->
+        		<div class="alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        		<div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
 				<div class="alert alert-danger" th:if="${param.error}">
 					<!-- ${param}でリクエストパラメータを保持 -->
 					ログイン情報に誤りがあります
