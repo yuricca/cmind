@@ -27,7 +27,7 @@ public class LoginUserDetailsService implements UserDetailsService{
     	
         //該当レコードが取得できなかった場合はエラーにする
         if  (staff  ==  null)   {
-            throw new UsernameNotFoundException("Wrong email or password");
+            throw new UsernameNotFoundException("Wrong employeeId or password");
         }
 
         //ログインユーザー権限を設定
