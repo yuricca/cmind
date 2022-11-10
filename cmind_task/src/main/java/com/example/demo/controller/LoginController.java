@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.model.FormValidation;
 import com.example.demo.model.Staff;
 import com.example.demo.security.LoginUserDetails;
 
@@ -19,14 +18,16 @@ import com.example.demo.security.LoginUserDetails;
 public class LoginController {
 	//ログイン画面への遷移
 	@GetMapping("/login")
-	public String getLogin(@ModelAttribute FormValidation formValidation) {
+	public String getLogin(@ModelAttribute Staff staff) {
 		return "login";
 	}
 
 	//ログイン成功後top画面の表示
 	@PostMapping("/login")
-	public String postLogin(@ModelAttribute @Validated FormValidation formValidation, BindingResult result, Model model) {
+	public String postLogin(@ModelAttribute @Validated Staff staff, BindingResult result, Model model) {
 		if (result.hasErrors()) {
+			
+			
             return "login";
         }
 		return "top";
